@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebcb9810-7c17-4e67-91a2-9c67acd50069" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/monkey/ast/ast.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/monkey/ast/ast.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/monkey/parser/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/monkey/parser/parser.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/monkey/parser/parser_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/monkey/parser/parser_test.go" afterDir="false" />
     </list>
@@ -24,24 +25,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="go" value="19" />
+          <entry key="go" value="20" />
           <entry key="iml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Go" value="19" />
+          <entry key="Go" value="20" />
           <entry key="IDEA_MODULE" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="go" value="15313" />
+          <entry key="go" value="19615" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="15313" />
+          <entry key="Go" value="19615" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -68,10 +69,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/monkey/parser/parser_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+            <state relative-caret-position="309">
+              <caret line="219" column="8" selection-start-line="219" selection-start-column="8" selection-end-line="219" selection-end-column="8" />
               <folding>
                 <element signature="e#16#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/monkey/ast/ast.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="469">
+              <caret line="157" selection-start-line="157" selection-end-line="157" />
+              <folding>
+                <element signature="e#13#54#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,8 +93,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/monkey/parser/parser.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="157" column="19" selection-start-line="157" selection-start-column="9" selection-end-line="157" selection-end-column="20" />
+            <state relative-caret-position="405">
+              <caret line="230" column="10" selection-start-line="230" selection-start-column="10" selection-end-line="230" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -281,7 +294,7 @@
     <property name="SearchEverywhereHistoryKey" value="parser_test.go&#9;FILE&#9;file:///Users/hal/IdeaProjects/MonkeyImplGo/src/monkey/parser/parser_test.go" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536495504711" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536590437036" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/opt/npm/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -365,12 +378,12 @@
       <option name="presentableId" value="Default" />
       <updated>1535464160219</updated>
       <workItem from="1535464163883" duration="2108000" />
-      <workItem from="1536460508391" duration="25030000" />
+      <workItem from="1536460508391" duration="29978000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27138000" />
+    <option name="totallyTimeSpent" value="32086000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -383,15 +396,15 @@
       <window_info id="Favorites" order="5" sideWeight="0.50666666" side_tool="true" weight="0.1910867" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32880098" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.3840049" visible="true" weight="0.32834226" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4993895" visible="true" weight="0.32834226" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.3840049" weight="0.32834226" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39978448" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49147922" weight="0.32659933" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.52556235" side_tool="true" weight="0.32884398" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.3298122" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.6159951" side_tool="true" visible="true" weight="0.32834226" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.50061053" side_tool="true" visible="true" weight="0.32834226" />
       <window_info anchor="bottom" id="Spring" order="10" sideWeight="0.49284253" weight="0.32772166" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.46898434" visible="true" weight="0.32884398" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32979977" />
@@ -480,27 +493,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/monkey/ast/ast.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/monkey/parser/parser_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+        <state relative-caret-position="309">
+          <caret line="219" column="8" selection-start-line="219" selection-start-column="8" selection-end-line="219" selection-end-column="8" />
           <folding>
             <element signature="e#16#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/monkey/ast/ast.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="157" selection-start-line="157" selection-end-line="157" />
+          <folding>
+            <element signature="e#13#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/monkey/parser/parser.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="157" column="19" selection-start-line="157" selection-start-column="9" selection-end-line="157" selection-end-column="20" />
+        <state relative-caret-position="405">
+          <caret line="230" column="10" selection-start-line="230" selection-start-column="10" selection-end-line="230" selection-end-column="10" />
         </state>
       </provider>
     </entry>

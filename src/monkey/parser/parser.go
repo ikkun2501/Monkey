@@ -5,6 +5,7 @@ import (
 	"../../monkey/lexer"
 	"../../monkey/token"
 	"fmt"
+	"strconv"
 )
 
 type Parser struct {
@@ -29,19 +30,21 @@ func New(l *lexer.Lexer) *Parser {
 
 	p.prefixParseFns = make(map[token.TokenType]prefixParseFn)
 	p.registerPrefix(token.IDENT, p.parseIdentifier)
+	p.registerPrefix(token.INT, p.parseIntegerLiteral)
+
+	p.registerPrefix(token.BANG, p.parsePrefixExpression)
+	p.registerPrefix(token.MINUS, p.parsePrefixExpression)
 
 	return p
 }
 
-func (p *Parser) parseIdentifier() ast.Expression {
-	return &ast.Identifier{Token: p.curToken, Value: p.curToken.Literal}
-}
-
+// 次のトークンを取得する
 func (p *Parser) nextToken() {
 	p.curToken = p.peekToken
 	p.peekToken = p.l.NextToken()
 }
 
+// プログラムを解析する
 func (p *Parser) ParseProgram() *ast.Program {
 	program := &ast.Program{}
 	program.Statements = []ast.Statement{}
@@ -57,6 +60,8 @@ func (p *Parser) ParseProgram() *ast.Program {
 	return program
 }
 
+// 式の解析
+// トークンによって解析方法を切り替える
 func (p *Parser) parseStatement() ast.Statement {
 	// カレントトークンによって解読方法を切り替える
 	switch p.curToken.Type {
@@ -95,6 +100,7 @@ func (p *Parser) parseLetStatement() *ast.LetStatement {
 	return stmt
 }
 
+// return文の解析
 func (p *Parser) parseReturnStatement() *ast.ReturnStatement {
 	stmt := &ast.ReturnStatement{Token: p.curToken}
 
@@ -126,7 +132,7 @@ func (p *Parser) peekError(t token.TokenType) {
 	p.errors = append(p.errors, msg)
 }
 
-//
+// 次のトークンが想定するものか
 func (p *Parser) expectPeek(t token.TokenType) bool {
 	if p.peekTokenIs(t) {
 		p.nextToken()
@@ -142,33 +148,67 @@ type (
 	infixParseFn func(ast.Expression) ast.Expression
 )
 
+// 前置演算子タイプごとの処理を登録
 func (p *Parser) registerPrefix(tokenType token.TokenType, fn prefixParseFn) {
 	p.prefixParseFns[tokenType] = fn
 }
 
+// 中置演算子タイプごとの処理を登録
 func (p *Parser) registerInfix(tokenType token.TokenType, fn infixParseFn) {
 	p.infixParseFns[tokenType] = fn
 }
 
+// 式の解析
 func (p *Parser) parseExpressionStatement() *ast.ExpressionStatement {
+
+	//  statementの生成
 	stmt := &ast.ExpressionStatement{Token: p.curToken}
 
+	// Expressionの解析
 	stmt.Expression = p.parseExpression(LOWEST)
 
+	// 次のトークンがセミコロンの場合、トークンを飛ばす
 	if p.peekTokenIs(token.SEMICOLON) {
 		p.nextToken()
 	}
+
 	return stmt
 }
 
+// 式の解析
 func (p *Parser) parseExpression(precedence int) ast.Expression {
+	// prefixタイプによって解析処理を取得する
 	prefix := p.prefixParseFns[p.curToken.Type]
+	// 該当するprefixタイプがなければ・・・
 	if prefix == nil {
+		p.noPrefixParserFnError(p.curToken.Type)
 		return nil
 	}
+	// prefixを
 	leftExp := prefix()
 
 	return leftExp
+}
+
+// 数値リテラルの解析 String → Int
+func (p *Parser) parseIntegerLiteral() ast.Expression {
+
+	// String → Int
+	value, err := strconv.ParseInt(p.curToken.Literal, 0, 64)
+
+	if err != nil {
+		msg := fmt.Sprintf("could not parse %q as integer", p.curToken.Literal)
+		p.errors = append(p.errors, msg)
+		return nil
+	}
+
+	// Literalの生成
+	return &ast.IntegerLiteral{Token: p.curToken, Value: value}
+}
+
+// 識別子の解析
+func (p *Parser) parseIdentifier() ast.Expression {
+	return &ast.Identifier{Token: p.curToken, Value: p.curToken.Literal}
 }
 
 const (
@@ -181,3 +221,23 @@ const (
 	PREFIX
 	CALL
 )
+
+// 前置演算式解析エラー
+func (p *Parser) noPrefixParserFnError(t token.TokenType) {
+	msg := fmt.Sprintf("no prefix parse function for %s found", t)
+	p.errors = append(p.errors, msg)
+}
+
+// 前置演算式の解析
+func (p *Parser) parsePrefixExpression() ast.Expression {
+	expression := &ast.PrefixExpression{
+		Token:    p.curToken,
+		Operator: p.curToken.Literal,
+	}
+
+	p.nextToken()
+
+	expression.Right = p.parseExpression(PREFIX)
+
+	return expression
+}
