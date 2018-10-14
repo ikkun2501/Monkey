@@ -36,6 +36,7 @@ func (p *Program) TokenLiteral() string {
 	}
 }
 
+// Let式
 type LetStatement struct {
 	Token token.Token // token.LET トークン
 	Name  *Identifier
@@ -47,6 +48,7 @@ func (ls *LetStatement) TokenLiteral() string {
 	return ls.Token.Literal
 }
 
+// Return式
 type ReturnStatement struct {
 	Token       token.Token // 'return' トークン
 	ReturnValue Expression
@@ -55,6 +57,7 @@ type ReturnStatement struct {
 func (rs *ReturnStatement) statementNode()       {}
 func (rs *ReturnStatement) TokenLiteral() string { return rs.Token.Literal }
 
+// 式？
 type ExpressionStatement struct {
 	Token      token.Token // 式の最初のトークン
 	Expression Expression
@@ -65,6 +68,7 @@ func (es *ExpressionStatement) TokenLiteral() string {
 	return es.Token.Literal
 }
 
+// 識別子
 type Identifier struct {
 	Token token.Token
 	Value string
@@ -119,6 +123,7 @@ func (es *ExpressionStatement) String() string {
 	return ""
 }
 
+// 数値
 type IntegerLiteral struct {
 	Token token.Token
 	Value int64
@@ -132,6 +137,7 @@ func (il *IntegerLiteral) String() string {
 	return il.Token.Literal
 }
 
+/// 識別子
 func (i *Identifier) String() string { return i.Value }
 
 type PrefixExpression struct {
@@ -140,6 +146,7 @@ type PrefixExpression struct {
 	Right    Expression
 }
 
+// 前置演算子
 func (pe *PrefixExpression) expressionNode() {}
 func (pe *PrefixExpression) TokenLiteral() string {
 	return pe.Token.Literal
@@ -155,4 +162,26 @@ func (pe *PrefixExpression) String() string {
 	return out.String()
 }
 
+// 中置演算子
+type InfixExpression struct {
+	Token    token.Token
+	Left     Expression
+	Operator string
+	Right    Expression
+}
 
+func (oe *InfixExpression) expressionNode() {}
+func (oe *InfixExpression) TokenLiteral() string {
+	return oe.TokenLiteral()
+}
+func (oe *InfixExpression) String() string {
+
+	var out bytes.Buffer
+	out.WriteString("(")
+	out.WriteString(oe.Left.String())
+	out.WriteString(" " + oe.Operator + " ")
+	out.WriteString(oe.Right.String())
+	out.WriteString(")")
+
+	return out.String()
+}
