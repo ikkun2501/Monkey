@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebcb9810-7c17-4e67-91a2-9c67acd50069" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/monkey/ast/ast_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/monkey/ast/ast_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monkey/lexer/lexer_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/monkey/lexer/lexer_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monkey/parser/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/monkey/parser/parser.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monkey/repl/repl.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/monkey/repl/repl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monkey/ast/ast.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/monkey/ast/ast.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monkey/parser/parser_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/monkey/parser/parser_test.go" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,11 +62,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="parser_test.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="parser_test.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/monkey/parser/parser_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+            <state relative-caret-position="289">
+              <caret line="247" column="22" selection-start-line="247" selection-start-column="22" selection-end-line="247" selection-end-column="22" />
+              <folding>
+                <element signature="e#16#86#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,8 +86,8 @@
       <file leaf-file-name="ast.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/monkey/ast/ast.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="-493">
+              <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
               <folding>
                 <element signature="e#13#54#0" expanded="true" />
               </folding>
@@ -133,11 +134,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="parser.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="parser.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/monkey/parser/parser.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+            <state relative-caret-position="310">
+              <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
               <folding>
                 <element signature="e#16#108#0" expanded="true" />
               </folding>
@@ -190,6 +191,8 @@
       <find>parsePrefixExpression</find>
       <find>parseInf</find>
       <find>../</find>
+      <find>no</find>
+      <find>testLite</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\mori\IdeaProjects\Monkey\src\monkey</dir>
@@ -226,15 +229,15 @@
         <option value="$PROJECT_DIR$/src/token/token.go" />
         <option value="$PROJECT_DIR$/src/lexer/lexer_test.go" />
         <option value="$PROJECT_DIR$/src/monkey/token/token.go" />
-        <option value="$PROJECT_DIR$/src/monkey/ast/ast.go" />
         <option value="$PROJECT_DIR$/src/monkey/lexer/lexer.go" />
-        <option value="$PROJECT_DIR$/src/monkey/parser/parser_test.go" />
         <option value="$PROJECT_DIR$/src/monkey/main/main.go" />
         <option value="$PROJECT_DIR$/src/monkey/main.go" />
         <option value="$PROJECT_DIR$/src/monkey/repl/repl.go" />
         <option value="$PROJECT_DIR$/src/monkey/lexer/lexer_test.go" />
         <option value="$PROJECT_DIR$/src/monkey/ast/ast_test.go" />
         <option value="$PROJECT_DIR$/src/monkey/parser/parser.go" />
+        <option value="$PROJECT_DIR$/src/monkey/ast/ast.go" />
+        <option value="$PROJECT_DIR$/src/monkey/parser/parser_test.go" />
       </list>
     </option>
   </component>
@@ -339,13 +342,14 @@
     <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\mori\IdeaProjects\Monkey\src\monkey\parser" />
-      <recent name="$PROJECT_DIR$/src/monkey" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/monkey/ast" />
       <recent name="$PROJECT_DIR$/src/monkey/parser" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mori\IdeaProjects\Monkey\src\monkey" />
+      <recent name="C:\Users\mori\IdeaProjects\Monkey\src\monkey\parser" />
+      <recent name="$PROJECT_DIR$/src/monkey" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -460,12 +464,12 @@
       <workItem from="1536460508391" duration="30481000" />
       <workItem from="1539349712661" duration="10659000" />
       <workItem from="1539572412921" duration="555000" />
-      <workItem from="1539572992182" duration="1455000" />
+      <workItem from="1539572992182" duration="2884000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45258000" />
+    <option name="totallyTimeSpent" value="46687000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="278" y="14" width="1363" height="984" extended-state="0" />
@@ -524,6 +528,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5610">
           <caret line="330" column="41" selection-start-line="330" selection-start-column="41" selection-end-line="330" selection-end-column="41" />
+          <folding>
+            <element signature="e#16#86#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -594,13 +601,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$USER_HOME$/.goenv/versions/1.10.3/src/go/token/token.go" />
-    <entry file="file://$PROJECT_DIR$/src/monkey/parser/parser_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/monkey/parser/parser_tracing.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -635,16 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/monkey/ast/ast.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#13#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/monkey/lexer/lexer.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -668,10 +658,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/monkey/parser/parser.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+        <state relative-caret-position="310">
+          <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
           <folding>
             <element signature="e#16#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/monkey/ast/ast.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-493">
+          <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
+          <folding>
+            <element signature="e#13#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/monkey/parser/parser_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="247" column="22" selection-start-line="247" selection-start-column="22" selection-end-line="247" selection-end-column="22" />
+          <folding>
+            <element signature="e#16#86#0" expanded="true" />
           </folding>
         </state>
       </provider>

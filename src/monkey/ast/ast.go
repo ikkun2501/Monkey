@@ -123,7 +123,7 @@ func (es *ExpressionStatement) String() string {
 	return ""
 }
 
-// 数値
+// 数値リテラル
 type IntegerLiteral struct {
 	Token token.Token
 	Value int64
