@@ -1,9 +1,9 @@
 package parser
 
 import (
-	"../../monkey/ast"
-	"../../monkey/lexer"
-	"../../monkey/token"
+	"monkey/ast"
+	"monkey/lexer"
+	"monkey/token"
 	"fmt"
 	"strconv"
 )
@@ -28,13 +28,14 @@ func New(l *lexer.Lexer) *Parser {
 	p.nextToken()
 	p.nextToken()
 
+	// 前置演算子Parser関数を登録
 	p.prefixParseFns = make(map[token.TokenType]prefixParseFn)
 	p.registerPrefix(token.IDENT, p.parseIdentifier)
 	p.registerPrefix(token.INT, p.parseIntegerLiteral)
-
 	p.registerPrefix(token.BANG, p.parsePrefixExpression)
 	p.registerPrefix(token.MINUS, p.parsePrefixExpression)
 
+	// 中置演算子Parserの関数を登録
 	p.infixParseFns = make(map[token.TokenType]infixParseFn)
 	p.registerInfix(token.PLUS, p.parseInfixExpression)
 	p.registerInfix(token.MINUS, p.parseInfixExpression)
@@ -46,19 +47,6 @@ func New(l *lexer.Lexer) *Parser {
 	p.registerInfix(token.GT, p.parseInfixExpression)
 
 	return p
-}
-
-func (p *Parser) parseInfixExpression(left ast.Expression) ast.Expression {
-	expression := &ast.InfixExpression{
-		Token:    p.curToken,
-		Operator: p.curToken.Literal,
-		Left:     left,
-	}
-
-	precedence := p.curPrecedence()
-	p.nextToken()
-	expression.Right = p.parseExpression(precedence)
-	return expression
 }
 
 // 次のトークンを取得する
@@ -184,6 +172,7 @@ func (p *Parser) registerInfix(tokenType token.TokenType, fn infixParseFn) {
 // 式の解析
 func (p *Parser) parseExpressionStatement() *ast.ExpressionStatement {
 
+	defer untrace(trace("parseExpressionStatement"))
 	//  statementの生成
 	stmt := &ast.ExpressionStatement{Token: p.curToken}
 
@@ -200,6 +189,7 @@ func (p *Parser) parseExpressionStatement() *ast.ExpressionStatement {
 
 // 式の解析
 func (p *Parser) parseExpression(precedence int) ast.Expression {
+	defer untrace(trace("parseExpression"))
 	// prefixタイプによって解析処理を取得する
 	prefix := p.prefixParseFns[p.curToken.Type]
 	// 該当するprefixタイプがなければ・・・
@@ -227,6 +217,7 @@ func (p *Parser) parseExpression(precedence int) ast.Expression {
 
 // 数値リテラルの解析 String → Int
 func (p *Parser) parseIntegerLiteral() ast.Expression {
+	defer untrace(trace("parseIntegerLiteral"))
 
 	// String → Int
 	value, err := strconv.ParseInt(p.curToken.Literal, 0, 64)
@@ -247,7 +238,7 @@ func (p *Parser) parseIdentifier() ast.Expression {
 }
 
 const (
-	_ int = iota
+	_           int = iota
 	LOWEST
 	EQUALS
 	LESSGREATER
@@ -265,6 +256,7 @@ func (p *Parser) noPrefixParserFnError(t token.TokenType) {
 
 // 前置演算式の解析
 func (p *Parser) parsePrefixExpression() ast.Expression {
+	defer untrace(trace("parsePrefixExpression"))
 	expression := &ast.PrefixExpression{
 		Token:    p.curToken,
 		Operator: p.curToken.Literal,
@@ -274,6 +266,20 @@ func (p *Parser) parsePrefixExpression() ast.Expression {
 
 	expression.Right = p.parseExpression(PREFIX)
 
+	return expression
+}
+// 中置演算式の解析
+func (p *Parser) parseInfixExpression(left ast.Expression) ast.Expression {
+	defer untrace(trace("parseInfixExpression"))
+	expression := &ast.InfixExpression{
+		Token:    p.curToken,
+		Operator: p.curToken.Literal,
+		Left:     left,
+	}
+
+	precedence := p.curPrecedence()
+	p.nextToken()
+	expression.Right = p.parseExpression(precedence)
 	return expression
 }
 

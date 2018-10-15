@@ -1,10 +1,10 @@
-package main
+package monkey
 
 import (
 	"fmt"
 	"os"
 	"os/user"
-	"../../monkey/repl"
+	"monkey/repl"
 )
 
 func main() {

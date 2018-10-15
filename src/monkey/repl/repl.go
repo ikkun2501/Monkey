@@ -1,8 +1,8 @@
 package repl
 
 import (
-	"../../monkey/lexer"
-	"../../monkey/token"
+	"monkey/lexer"
+	"monkey/token"
 	"bufio"
 	"fmt"
 	"io"

@@ -1,6 +1,6 @@
 package lexer
 
-import "../../monkey/token"
+import "monkey/token"
 
 /*
 字句解析
