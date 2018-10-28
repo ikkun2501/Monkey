@@ -98,7 +98,7 @@ func (p *Parser) parseLetStatement() *ast.LetStatement {
 	stmt := &ast.LetStatement{Token: p.curToken}
 
 	//
-	fmt.Printf("Type:%s,Literal:%s\n", p.curToken.Type, p.curToken.Literal)
+	//fmt.Printf("Type:%s,Literal:%s\n", p.curToken.Type, p.curToken.Literal)
 	if !p.expectPeek(token.IDENT) {
 		return nil
 	}
@@ -273,7 +273,9 @@ func (p *Parser) noPrefixParserFnError(t token.TokenType) {
 
 // 前置演算式の解析
 func (p *Parser) parsePrefixExpression() ast.Expression {
+
 	defer untrace(trace("parsePrefixExpression"))
+
 	expression := &ast.PrefixExpression{
 		Token:    p.curToken,
 		Operator: p.curToken.Literal,
@@ -474,6 +476,7 @@ func (p *Parser) parseCallArguments() []ast.Expression {
 	var args []ast.Expression
 
 	if p.peekTokenIs(token.RPAREN) {
+		p.nextToken()
 		return args
 	}
 
