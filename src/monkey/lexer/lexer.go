@@ -7,13 +7,13 @@ import "monkey/token"
  */
 type Lexer struct {
 	// 解析対象
-	input        string
+	input string
 	// 現在位置
-	position     int
+	position int
 	// 現在読み込み位置
 	readPosition int
 	// 読み込んだ文字
-	ch           byte
+	ch byte
 }
 
 /*
@@ -93,6 +93,9 @@ func (l *Lexer) NextToken() token.Token {
 		tok = newToken(token.LBRACE, l.ch)
 	case '}':
 		tok = newToken(token.RBRACE, l.ch)
+	case '"':
+		tok.Type = token.STRING
+		tok.Literal = l.readString()
 	case 0:
 		tok.Literal = ""
 		tok.Type = token.EOF
@@ -162,4 +165,20 @@ func (l *Lexer) peekChar() byte {
 	} else {
 		return l.input[l.readPosition]
 	}
+}
+
+// 文字列の読み込み
+func (l *Lexer) readString() string {
+
+	// "(START)
+	position := l.position + 1
+	// "(END)まで
+	for {
+		l.readChar()
+		if l.ch == '"' || l.ch == 0 {
+			break
+		}
+	}
+
+	return l.input[position:l.position]
 }
