@@ -398,7 +398,7 @@ func (p *Parser) parseIfExpression() ast.Expression {
 func (p *Parser) parseBlockStatement() *ast.BlockStatement {
 
 	// curToken "{"
-	fmt.Printf("BlockStatement curToken:%#v\n", p.curToken)
+	//fmt.Printf("BlockStatement curToken:%#v\n", p.curToken)
 	block := &ast.BlockStatement{Token: p.curToken}
 
 	// 式の配列
