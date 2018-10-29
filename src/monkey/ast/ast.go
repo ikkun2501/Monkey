@@ -350,5 +350,4 @@ func (ie *IndexExpression) String() string {
 	out.WriteString("])")
 
 	return out.String()
-
 }
